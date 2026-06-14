@@ -1,0 +1,101 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #000;
+  color: #fff; /* 文字色を白に設定 */
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  display: center ;
+  padding: 20px;
+}
+
+
+
+#puzzle-container {
+  display: grid;
+  grid-template-columns: repeat(3, 100px); /* 5×5のパズルの場合 */
+  gap: 5px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.puzzle-piece {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+}
+#timer {
+  color: #fff; /* タイマーの文字色を白に設定 */
+  margin-top: 20px;
+}
+
+#completion-message {
+  color: #fff; /* 完成メッセージの文字色を白に設定 */
+  font-size: 1.5em;
+  margin-top: 20px;
+}
+
+#hint {
+  color: #fff; /* ヒントの文字色を白に設定 */
+  font-size: 1.2em;
+  margin-top: 20px;
+  display: none; /* 初期状態では非表示 */
+}
+
+#hint-image {
+  display: none;
+  position: absolute;
+  top: 150px;
+  left: 50px;
+  width: 300px;
+}
+
+#reset-button {
+  display: none; /* 初期状態では非表示 */
+  position: absolute;
+  top: 500px;
+  left: 710px;
+  font-size: 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+#hint-button {
+  display: none; /* 初期状態では非表示 */
+  position: absolute;
+  top: 500px;
+  left: 130px;
+  font-size: 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+#ranking-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: #fff;
+  text-align: left;
+}
+
+#ranking-list {
+  list-style-type: decimal;
+  padding-left: 20px;
+}
+
+#username-container {
+  padding-right: 50px;
+  margin-top: 210px;
+}
+
+.ranking-div {
+  padding-left: 100px;
+}
+
+

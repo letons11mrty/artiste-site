@@ -1,0 +1,3007 @@
+html{
+  scroll-behavior: smooth;
+} 
+body{
+  width: 100%;
+  margin: 0;
+}
+.fade-out {
+  opacity: 1;
+  transition: opacity 0.5s ease-out;
+}
+
+.fade-out-active {
+  opacity: 0;
+}
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
+}
+
+.fade-in-active {
+  opacity: 1;
+}
+.dotgothic16-regular,.neon,.next p,.day p{
+    font-family: "DotGothic16", sans-serif;
+    font-style: normal;
+  }
+  
+  .baskervville-sc-regular ,.samplearea p,.eve-input input,nav,.top-icon p,p,button,h2,.content-box a,.end p,.more a,.content-box p,.text-profile h2 p{
+    font-family: "Baskervville SC", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .img-eve{
+    position: relative;
+    margin-left: 535px;
+  }
+  .img-eve img{
+    width: 400px;
+  }
+
+  .text-profile{
+    position: absolute;
+    color: #FFF;
+    text-align: center;
+    left: 225px;
+    line-height: 3.5;
+  }
+  .text-profile p{
+    font-size: 15px;
+  }
+  .text-profile h2{
+    font-size: 40px;
+  }
+
+
+
+
+  .gallery-cell{
+    position:relative;
+    padding: 15px;
+    margin-top: 0;
+  }
+
+  .gallery-cell p{
+    position: absolute;
+    bottom: 20px;
+    left: 100px;
+  }
+  .black p{
+    color: black;
+  }
+  .white p{
+    color: white;
+  }
+  .next-news{
+    margin-top: 50px;
+    margin-left: 800px;
+    margin-bottom: 100px;
+  }
+
+  .more{
+    position: absolute;
+    top: 520px;
+    left: 450px;
+  }
+  .more a{
+    text-decoration: none;
+    color: #FFF;
+    background-image: linear-gradient(90deg, #fff, #fff); /* 線の色 */
+    background-repeat: no-repeat;
+    background-position: left bottom; /* 線の起点を左・下に設定 */
+    background-size: 0 1px; /* 線の横幅を0、縦幅を1pxに */
+    transition: background-size 0.6s; /* 線を伸ばすアニメーション実行時間を指定 */
+  }
+  
+
+.more a:hover{
+  background-size: 100% 1px; /* 線の横幅を100%にする */
+}
+
+  .top-icon img{  
+  width: 100%;
+
+  }
+  .top-icon{
+    text-align: center;
+  }
+  .top-icon p{
+    position: absolute;
+    color: white;
+    top: 220px;
+    left: 590px;
+    font-size: 30px;
+  }
+  .gallery-block{
+    position: relative;
+  }
+
+  .eve-top{
+    width: 100%;
+  }
+  .eve-top img{
+    width: 400px;
+  }
+  .eve-top-img{
+    text-align: center;
+  }
+  .eve-top-img img{
+    width: 1000px;
+  }
+  
+  #g-nav.panelactive{
+    /*position:fixed;にし、z-indexの数値を大きくして前面へ*/
+    position:fixed;
+    z-index: 999;
+  top: 0;
+  width:100%;
+    height: 100vh;
+}
+
+/*丸の拡大*/
+.circle-bg{
+    position: fixed;
+  z-index:3;
+    /*丸の形*/
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background:#000;
+    /*丸のスタート位置と形状*/
+  transform: scale(0);/*scaleをはじめは0に*/
+    right:-50px;
+    top:calc(50% - 50px);/*50%から円の半径を引いた値*/
+    transition: all .6s;/*0.6秒かけてアニメーション*/
+}
+
+.circle-bg.circleactive{
+  transform: scale(50);/*クラスが付与されたらscaleを拡大*/
+}
+
+/*ナビゲーションの縦スクロール*/
+#g-nav-list{
+    display: none;/*はじめは表示なし*/
+    /*ナビの数が増えた場合縦スクロール*/
+    position: fixed;
+    z-index: 999; 
+    width: 100%;
+    height: 100vh;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+#g-nav.panelactive #g-nav-list{
+    display: block; /*クラスが付与されたら出現*/
+}
+
+/*ナビゲーション*/
+#g-nav ul {
+  opacity: 0;/*はじめは透過0*/
+    /*ナビゲーション天地中央揃え※レイアウトによって調整してください。不必要なら削除*/
+    position: absolute;
+    z-index: 999;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+ul hr{
+  opacity: 0;
+  z-index: 990;
+  color: #FFF;
+}
+#g-nav ul hr{
+animation-name:gnaviAnime;
+animation-duration:1s;
+animation-delay:.2s;/*0.2 秒遅らせて出現*/
+animation-fill-mode:forwards;
+opacity:0;
+text-align: center;
+}
+@keyframes gnaviAnime{
+0% {
+opacity: 0;
+}
+100% {
+opacity: 1;
+}
+}
+
+/*背景が出現後にナビゲーションを表示*/
+#g-nav.panelactive ul {
+    opacity:1;
+}
+
+/* 背景が出現後にナビゲーション li を表示※レイアウトによって調整してください。不必要なら削除*/
+#g-nav.panelactive ul li{
+animation-name:gnaviAnime;
+animation-duration:1s;
+animation-delay:.2s;/*0.2 秒遅らせて出現*/
+animation-fill-mode:forwards;
+opacity:0;
+}
+@keyframes gnaviAnime{
+0% {
+opacity: 0;
+}
+100% {
+opacity: 1;
+}
+}
+
+
+/*リストのレイアウト設定*/
+#g-nav li{
+  text-align: center; 
+  list-style: none;
+}
+
+#g-nav li a{
+  color: #fff;
+  text-decoration: none;
+  padding:10px;
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+  font-size: 30px;
+}
+/*========= ボタンのためのCSS ===============*/
+.openbtn1{
+  position:fixed;
+  top:10px;
+  right: 10px;
+  z-index: 9999;/*ボタンを最前面に*/
+  cursor: pointer;
+    width: 50px;
+    height:50px;
+}
+  
+  ul li a{
+    text-decoration: none; /* デフォルトの下線を非表示にする */
+    color: #fff; /* 文字色 */
+    background-image: linear-gradient(90deg, #fff, #fff); /* 線の色 */
+    background-repeat: no-repeat;
+    background-position: left bottom; /* 線の起点を左・下に設定 */
+    background-size: 0 1px; /* 線の横幅を0、縦幅を1pxに */
+    transition: background-size 0.6s; /* 線を伸ばすアニメーション実行時間を指定 */
+  }
+  
+  ul li a:hover {
+    background-size: 100% 1px; /* 線の横幅を100%にする */
+  }
+
+/*×に変化*/  
+.openbtn1 span{
+    display: inline-block;
+    transition: all .4s;
+    position: absolute;
+    left: 14px;
+    height: 3px;
+    border-radius: 2px;
+  background-color: #fff;
+    width: 45%;
+  }
+
+.openbtn1 span:nth-of-type(1) {
+  top:15px; 
+}
+
+.openbtn1 span:nth-of-type(2) {
+  top:23px;
+}
+
+.openbtn1 span:nth-of-type(3) {
+  top:31px;
+}
+
+.openbtn1.active span:nth-of-type(1) {
+    top: 18px;
+    left: 18px;
+    transform: translateY(6px) rotate(-45deg);
+    width: 30%;
+}
+
+.openbtn1.active span:nth-of-type(2) {
+  opacity: 0;
+}
+
+.openbtn1.active span:nth-of-type(3){
+    top: 30px;
+    left: 18px;
+    transform: translateY(-6px) rotate(45deg);
+    width: 30%;
+}
+
+
+
+
+
+  .timer{
+    margin-top: 200px;
+  }
+  
+  #CDT {
+width: 100%;
+text-align: center;
+font-size: 90px;
+font-weight: bold;
+color: #ffffff;
+font-family: 'Noto Sans JP', sans-serif;}
+#CDT01 {
+width: 100%;
+text-align: center;
+font-size: 49px;
+font-weight: bold;
+color: #ffffff;
+font-family: 'Noto Sans JP', sans-serif;
+}
+
+.tl {
+color: #ffffff;
+font-size: 28px;
+font-weight: 600;
+text-align: center;
+margin: 0;
+line-height: 1.5;
+
+}
+
+.timer {
+  position: relative;
+    background: #000;
+    margin: 5px auto;
+    padding: 5px;
+    text-align: center;
+    font-size: 2.5rem;
+    color: #fff;
+    line-height: 1.5;
+    font-weight: 600;
+    font-family: 'Times New Roman', Times, serif
+    
+}
+/* font */
+
+
+body {
+    background: #000; /* 背景色を黒に指定 */
+  }
+
+  #CDT{
+    width: 100%;
+  }
+  .neon {
+    position: absolute;
+    color: #FFF;     /* 文字色を白に指定 */
+    font-size: 50px; /* 適度な文字サイズを指定 */
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 70px #fff, 0 0 80px #fff, 0 0 100px #fff, 0 0 150px #ffffff; /* 薄い紫色の光を再現 */
+    top: 100px;
+    left: 650px;
+  }
+  .next p{
+    position: absolute;
+    font-size: 30px;
+    text-align: center;
+    top: 0;
+    left: 600px;
+  }
+  .day p{       
+    position: absolute;
+    font-size: 45px;
+    left: 690px;
+    top: 200px;
+  }
+  .samplearea{
+    position: relative;
+    margin-top: -200px;
+  }
+  .eve{
+    position: absolute;
+    top: 400px;
+    left: 400px;
+  }
+  .eve-img img{
+    position: absolute;
+    top: 400px;
+    left: 700px;
+    z-index: 0;
+  }
+  
+
+
+  input{
+    font-size: 30px;
+    border-radius: 30px;
+    background-color: black;
+    color: #FFF;
+    display: flex;
+    z-index: 10px;
+    border: none;
+  }
+  
+
+.eve-input input{
+  color:#FFF;
+  font-size:120%;
+  transition: .3s;
+}
+.eve-input input::after{
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: #FFF;
+  transition: .3s;
+}
+.eve-input input:hover::after{
+  width: 100%;
+}
+
+
+
+  .eve-p{
+    position:absolute ;
+    color: #FFF;
+    top: -90px;
+    left: 0px;
+    font-size: 80px;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+.dotgothic16-regular,#CDT,#CDT00 {
+    font-family: "DotGothic16", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  /* black */
+  .black{
+    display:block;
+  }
+  .black img{
+    filter: saturate(0%);
+    transition:0.3s;
+  }
+  .black:hover img{
+    filter: saturate(100%);
+  }
+  
+  /* white */
+
+  .white img{
+    filter: saturate(0%);
+    transition:0.3s;
+  }
+  .white:hover img{
+    filter: saturate(100%);
+  }
+.slider h2{
+    font-size: 30px;
+    margin-top: 0px;
+    margin-left: 75px;
+  }
+
+  .discography-top{
+    text-align: center;
+    height: 100px;
+    margin-bottom: 60px;
+    margin-top: 60px;
+    background-color: #3030306b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .discography-top h2{
+    position: static;
+  }
+  /* box */
+  .information{
+    background-color: #00000000;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+  p{
+    color: #FFF;
+  }
+  /* all */
+  .all17{
+    margin-left : 150px;
+    .single26{
+      position: absolute;
+      top: 500px;
+      left: 150px;
+    }
+    .p01{
+      position: absolute;
+      font-size: 23px;
+      top: 880px;
+      left: 230px;
+    }
+    .pp01{
+      position: absolute;
+      font-size: 15px;
+      top: 840px;
+      left: 270px;
+    }
+    
+    .album08{
+      position: absolute;
+      top: 500px;
+      left: 575px;
+    }
+    .p02{
+      position: absolute;
+      font-size: 23px;
+      top: 880px;
+      left: 680px;
+    }
+    .pp02{
+      position: absolute;
+      font-size: 15px;
+      top: 840px;
+      left: 660px;
+    }
+   
+    .single25{
+      position: absolute;
+      top: 500px;
+      left: 1000px;
+    }
+    .p03{
+      position: absolute;
+      font-size: 23px;
+      top: 880px;
+      left: 1130px;
+    }
+    .pp03{
+      position: absolute;
+      font-size: 15px;
+      top: 840px;
+      left: 1115px;
+    }
+  }
+  .all16{
+    position: relative;
+    margin-left: 150px;
+    
+    .single24{
+      position: absolute;
+      top: -600px;
+      left: -10px;
+    }
+    .p04{
+    position: absolute;
+    font-size: 23px;
+    top: -220px;
+    left: 60px;
+    }
+    .pp04{
+      position: absolute;
+      font-size: 15px;
+      top: -260px;
+      left: 100px;
+    }
+      .novel05{
+        position: absolute;
+        top: -600px;
+        left: 470px;
+      }
+      .p05{
+        position: absolute;
+        font-size: 23px;
+        top: -220px;
+        left: 510px;
+      }
+      .pp05{
+        position: absolute;
+        font-size: 15px;
+        top: -260px;
+        left: 580px;
+      }
+      .single23{
+        position: absolute;
+        top: -600px;
+        left: 840px;
+      }
+      .p06{
+        position: absolute;
+        font-size: 23px;
+        top: -220px;
+        left: 820px;
+      }
+      .pp06{
+        position: absolute;
+        font-size: 15px;
+        top: -260px;
+        left: 960px;
+      }
+  }
+  .all15{
+    position: relative;
+    margin-left: 150px;
+    .comic0201{
+      position: absolute;
+      top: -50px;
+      left: 35px;
+    }
+    .p07{
+      position: absolute;
+      top: 340px;
+      left: 30px;
+      font-size: 23px;
+    }
+    .pp07{
+      position: absolute;
+      top: 300px;
+      left: 110px;
+      font-size: 15px;
+    }
+    
+    .score04{
+      position: absolute;
+      top: -50px;
+      left: 470px;
+    }
+    .p08{
+      position: absolute;
+      top: 340px;
+      left: 470px;
+      font-size: 23px;
+    }
+    .pp08{
+      position: absolute;
+      top: 300px;
+      left: 550px;
+      font-size: 15px;
+    }
+    .single22{
+      position: absolute;
+      top: -50px;
+      left: 840px;
+    }
+    .p09{
+      position: absolute;
+      top: 340px;
+      left: 940px;
+      font-size: 23px;
+    }
+    .pp09{
+      position: absolute;
+      top: 300px;
+      left: 960px;
+      font-size: 15px;
+    }
+  }
+  .all14{
+    position: relative;
+    margin-top: 1200px;
+    .single21{
+      position: absolute;
+      top: 500px;
+      left: 143px;
+    }
+    .p10{
+      position: absolute;
+      top: 880px;
+      left: 240px;
+      font-size: 23px;
+    }
+    .pp10{
+      position: absolute;
+      top: 840px;
+      left: 260px;
+      font-size: 15px;
+    }
+    .single20{
+      position: absolute;
+      top: 500px;
+      left: 570px;
+    }
+    .p11{
+      position: absolute;
+      top: 875px;
+      left: 715px;
+      font-size: 28px;
+    }
+    .pp11{
+      position: absolute;
+      top: 840px;
+      left: 695px;
+      font-size: 15px;
+    }
+    .single19{
+      position: relative;
+      top: 500px;
+      left: 990px;
+    }
+    .p12{
+      position: absolute;
+      font-size: 23px;
+      top: 880px;
+      left: 1130px;
+    }
+    .pp12{
+      position: absolute;
+      font-size: 15px;
+      top: 840px;
+      left: 1120px;
+    }
+
+  }
+  .all13{
+    margin-top: 1600px;
+    position: relative;
+    .novel04{
+      position: absolute;
+      top: -900px;
+      left: 195px;
+    }
+    .p13{
+      position: absolute;
+      font-size: 23px;
+      top: -500px;
+      left: 230px;
+    }
+    .pp13{
+      position: absolute;
+      font-size: 15px;
+      top: -550px;
+      left: 300px;
+    }
+    .single18{
+      position: absolute;
+      top: -900px;
+      left: 570px;
+    }
+    .p14{
+      position: absolute;
+      top: -500px;
+      left: 720px;
+      font-size: 23px;
+    }
+    .pp14{
+      position: absolute;
+      top: -550px;
+      left: 690px;
+      font-size: 15px;
+    }
+    .comic04{
+      position: absolute;
+      top: -900px;
+      left: 1040px;
+    }
+    .p15{
+      position: absolute;
+      top: -500px;
+      left: 1060px;
+      font-size: 23px;
+    }
+    .pp15{
+      position: absolute;
+      top: -550px;
+      left: 1130px;
+      font-size: 15px;
+    }
+
+  }
+  .all12{
+    margin-top: 2000px;
+    position: relative;
+    .single17{
+      position: absolute;
+      top: -750px;
+      left: 145px;
+    }
+    .p16{
+      position: absolute;
+      font-size: 23px;
+      top: -350px;
+      left: 270px;
+    }
+    .pp16{
+      position: absolute;
+      font-size: 15px;
+      top: -400px;
+      left: 260px;
+    }
+    .novel03{
+      position: absolute;
+      top: -750px;
+      left: 620px;
+    }
+    .p17{
+      position: absolute;
+      top: -350px;
+      left: 660px;
+      font-size: 23px;
+
+    }
+    .pp17{
+      position: absolute;
+      top: -400px;
+      left: 720px;
+      font-size: 15px;
+    }
+    .ep03{
+      position: absolute;
+      top: -750px;
+      left: 990px;
+
+    }
+    .p18{
+      position: absolute;
+      top: -350px;
+      left: 1100px;
+      font-size: 23px;
+    }
+    .pp18{
+      position: absolute;
+      top: -400px;
+      left: 1130px;
+      font-size: 15px;
+    }
+
+  }
+  .all11{
+    margin-top: 2400px;
+    position: relative;
+    .single16{
+      position: absolute;
+      top: -625px;
+      left: 145px;
+    }
+    .p19{
+      position: absolute;
+      top: -225px;
+      left: 262px;
+      font-size: 23px;
+    }
+    .pp19{
+      position: absolute;
+      top: -275px;
+      left: 260px;
+      font-size: 15px;
+    }
+    .single15{
+      position: absolute;
+      top: -625px;
+      left: 570px;
+    }
+    .p20{
+      position: absolute;
+      font-size: 23px;
+      top: -225px;
+      left: 660px;
+    }
+    .pp20{
+      position: absolute;
+      font-size: 15px;
+      top: -275px;
+      left: 690px;
+    }
+    .single14{
+      position: absolute;
+      top: -625px;
+      left: 990px;
+    }
+    .p21{
+      position: absolute;
+      top: -225px;
+      left: 1140px;
+      font-size: 23px;
+
+    }
+    .pp21{
+      position: absolute;
+      top: -275px;
+      left: 1110px;
+      font-size: 15px;
+    }
+
+  }
+  .all10{
+    margin-top: 2800px;
+    position: relative;
+    .comic03{
+      position: absolute;
+      top: -450px;
+      left: 195px;
+    }
+    .p22{
+      position: absolute;
+      font-size: 23px;
+      top: -50px;
+      left: 210px;
+    }
+    .pp22{
+      position: absolute  ;
+      top: -100px;
+      left: 280px;
+      font-size: 15px;
+    }
+    .novel02{
+      position: absolute;
+      top: -450px;
+      left: 620px;
+    }
+    .p23{
+      position: absolute;
+      top: -50px;
+      left: 660px;
+      font-size: 23px;
+    }
+    .pp23{
+      position: absolute;
+      top: -100px;
+      left: 720px;
+      font-size: 15px;
+    }
+    .card01{
+      position: absolute;
+      top: -450px;
+      left: 1010px;
+    }
+    .p24{
+      position: absolute;
+      top: -50px;
+      left: 1000px;
+      font-size: 23px;
+    }
+    .pp24{
+      position: absolute;
+      top: -100px;
+      left: 1110px;
+      font-size: 15px;
+    }
+
+
+  }
+  .all09{
+    margin-top: 3200px;
+    position: relative;
+    .movie01{
+      position: absolute;
+      top: -300px;
+      left: 165px;
+    }
+    .p25{
+      position: absolute;
+      top: 100px;
+      left: 210px;
+      font-size: 23px;
+    }
+    .pp25{
+      position: absolute;
+      top: 50px;
+      left: 290px;
+      font-size: 15px;
+    }
+    .novel01{
+      position: absolute;
+      top: -300px;
+      left: 620px;
+    }
+    .p26{
+      position: absolute;
+      top: 100px;
+      left: 660px;
+      font-size: 23px;
+    }
+    .pp26{
+      position: absolute;
+      top: 50px;
+      left: 730px;
+      font-size: 15px;
+    }
+    .single13{
+      position: absolute;
+      top: -300px;
+      left: 990px;
+    }
+    .p27{
+      position: absolute;
+      top: 100px;
+      left: 1080px;
+      font-size: 23px;
+    }
+    .pp27{
+      position: absolute;
+      top: 50px;
+      left: 1120px;
+      font-size: 15px;
+    }
+  }
+  
+  .all08{
+    margin-top: 3600px;
+    position: relative;
+    .single12{
+      position: absolute;
+      top: -150px;
+      left: 145px;
+    }
+    .p28{
+      position: absolute;
+      top: 250px;
+      left: 260px;
+      font-size: 23px;
+    }
+    .pp28{
+      position: absolute;
+      top: 200px;
+      left: 260px;
+      font-size: 15px;
+    }
+    .album07{
+      position: absolute;
+      top: -150px;
+      left: 570px;
+    }
+    .p29{
+      position: absolute;
+      top: 250px;
+      left: 660px;
+      font-size: 23px;
+    }
+    .pp29{
+      position: absolute;
+      top: 200px;
+      left: 680px;
+      font-size: 15px;
+    }
+    .live-in-animation01{
+      position: absolute;
+      top: -150px;
+      left: 1040px;
+    }
+    .p30{
+      position: absolute;
+      top: 250px;
+      left: 990px;
+      font-size: 23px;
+    }
+    .pp30{
+      position: absolute;
+      top: 200px;
+      left: 1130px;
+      font-size: 15px;
+    }
+  }
+  .all07{
+    margin-top: 4000px;
+    position: relative;
+    .album06{
+      position: absolute;
+      top: 0px;
+      left: 145px;
+    }
+    .p31{
+      position: absolute;
+      top: 400px;
+      left: 285px;
+      font-size: 23px
+    }
+    .pp31{
+      position: absolute;
+      top: 350px;
+      left: 250px;
+      font-size: 15px;
+
+    }
+    .single11{
+      position: absolute;
+      top: 0px;
+      left: 570px;
+    }
+    .p32{
+      position: absolute;
+      top: 400px;
+      left: 720px;
+      font-size: 23px;
+    }
+    .pp32{
+      position: absolute;
+      top: 350px;
+      left: 690px;
+      font-size: 15px;
+    }
+    .comic02{
+      position: absolute;
+      top: 0px;
+      left: 1040px;
+    }
+    .p33{
+      position: absolute;
+      top: 400px;
+      left: 1060px;
+      font-size: 23px;
+    }
+    .pp33{
+      position: absolute;
+      top: 350px;
+      left: 1120px;
+      font-size: 15px;
+    }
+  }
+  .all06{
+    margin-top: 4400px;
+    position: relative;
+    .ep02{
+      position: absolute;
+      top: 140px;
+      left: 145px;
+    }
+    .p34{
+      position: absolute;
+      top: 540px;
+      left: 200px;
+      font-size: 23px;
+    }
+    .pp34{
+      position: absolute;
+      top: 490px;
+      left: 270px;
+      font-size: 15px;
+    }
+    .single10{
+      position: absolute;
+      top: 145px;
+      left: 570px;
+    }
+    .p35{
+      position: absolute;
+      top: 540px;
+      left: 690px;
+      font-size: 23px;
+    }
+    .pp35{
+      position: absolute;
+      top: 490px;
+      left: 688px;
+      font-size: 15px;
+    }
+    .single09{
+      position: absolute;
+      top: 145px;
+      left: 990px;
+    }
+    .p36{
+      position: absolute;
+      top: 540px;
+      left: 1130px;
+      font-size: 23px;
+    }
+    .pp36{
+      position: absolute;
+      top: 490px;
+      left: 1115px;
+      font-size: 15px;
+    }
+
+  }
+  .all05{
+    margin-top: 4800px;
+    position: relative;
+    .single08{
+      position: absolute;
+      top: 270px;
+      left: 145px;
+    }
+    .p37{
+      position: absolute;
+      top: 670px;
+      left: 250px;
+      font-size: 23px;
+    }
+    .pp37{
+      position:   absolute;
+      left: 260px;
+      top: 620px;
+      font-size: 15px;
+    }
+    .single07{
+      position: absolute;
+      top: 270px;
+      left: 570px;
+    }
+    .p38{
+      position: absolute;
+      top: 670px;
+      left: 710px;
+      font-size: 23px;
+    }
+    .pp38{
+      position: absolute;
+      top: 620px;
+      left: 685px;
+      font-size: 15px;
+    }
+    .ep01{
+      position: absolute;
+      top: 270px;
+      left: 990px;
+    }
+    .p39{
+      position: absolute;
+      top: 670px;
+      left: 1050px;
+      font-size: 23px;
+    }
+    .pp39{
+      position: absolute;
+      top: 620px;
+      left: 1130px;
+      font-size: 15px;
+    }
+  }
+  .all04{
+    margin-top: 5200px;
+    position: relative;
+    .comic01{
+      position: absolute;
+      top: 400px;
+      left: 195px;
+    }
+    .p40{
+      position: absolute;
+      top: 800px;
+      left: 210px;
+      font-size: 23px;
+    }
+    .pp40{
+      position: absolute;
+      top: 750px;
+      ;left: 280px;
+      font-size: 15px;
+    }
+    .single06{
+      position: absolute;
+      top: 400px;
+      left: 570px;
+    }
+    .p41{
+      position: absolute;
+      font-size: 23px;
+      top: 800px;
+      left: 710px;
+    }
+    .pp41{
+      position: absolute;
+      top: 750px;
+      left: 680px;
+      font-size: 15px;
+    }
+    .single05{
+      position: absolute;
+      top: 400px;
+      left: 990px;
+    }
+    .p42{
+      position: absolute;
+      top: 800px;
+      left: 1125px;
+      font-size: 23px;
+    }
+    .pp42{
+      position: absolute;
+      top: 750px;
+      left: 1120px;
+      font-size: 15px;
+    }
+
+
+  }
+  .all03{
+    margin-top: 5600px;
+    position: relative;
+    .score03{
+      position: absolute;
+      top: 550px;
+      left: 195px;
+    }
+    .p43{
+      position: absolute;
+      top: 950px;
+      left: 240px;
+      font-size: 23px;
+    }
+    .pp43{
+      position: absolute;
+      top: 900px;
+      font-size: 15px;
+      left: 230px;
+    }
+
+    .single04{
+      position: absolute;
+      top: 550px;
+      left: 570px;
+    }
+    .p44{
+      position: absolute;
+      top: 950px;
+      font-size: 23px;
+      left: 710px;
+
+    }
+    .pp44{
+      position: absolute;
+      top: 900px;
+      left: 680px;
+      font-size: 15px;
+    }
+    .comic00{
+      position: absolute;
+      top: 550px;
+      left: 1040px;
+    }
+    .p45{
+      position: absolute;
+      top: 950px;
+      left: 1117px;
+      font-size: 23px;
+    }
+    .pp45{
+      position: absolute;
+      top: 900px;
+      left: 1120px;
+      font-size: 15px;
+    }
+  }
+  .all02{
+    margin-top: 6000px;
+    position: relative;
+    .single03{
+      position: absolute;
+      top: 700px;
+      left: 145px;
+    }
+    .p46{
+      position: absolute;
+      top: 1100px;
+      left: 290px;
+      font-size: 23px;
+    }
+    .pp46{
+      position: absolute;
+      top: 1050px;
+      left: 270px;
+      font-size: 15px;
+    }
+    .single02{
+      position: absolute;
+      top: 700px;
+      left: 570px;
+    }
+    .p47{
+      position: absolute;
+      top: 1100px;
+      left: 640px;
+      font-size: 23px;
+    }
+    .pp47{
+      position: absolute;
+      top: 1050px;
+      left: 690px;
+      font-size: 15px;
+    }
+    .single01{
+      position: absolute;
+      top: 700px;
+      left: 990px;
+    }
+    .p48{
+      position: absolute;
+      top: 1100px;
+      left: 1140px;
+      font-size: 23px;
+    }
+    .pp48{
+      position: absolute;
+      top: 1050px;
+      left: 1120px;
+      font-size: 15px;
+    }
+
+  }
+  .all01{
+    margin-top: 6400px;
+    position: relative;
+    .score02{
+      position: absolute;
+      top: 800px;
+      left: 195px;
+    }
+    .p49{
+      position: absolute;
+      top: 1200px;
+      left: 235px;
+      font-size: 23px;
+    }
+    .pp49{
+      position: absolute;
+      top: 1150px;
+      left: 225px;
+      font-size: 15px;
+    }
+    .illust-book01{
+      position: absolute;
+      top: 850px;
+      left: 570px;
+    }
+    .p50{
+      position: absolute;
+      font-size: 23px;
+      top: 1200px;
+      left: 700px;
+    }
+    .pp50{
+      position: absolute;
+      top: 1150px;
+      left: 690px;
+      font-size: 15px;
+    }
+    .album05{
+      position: absolute;
+      top: 800px;
+      left: 990px;
+    }
+    .p51{
+      position: absolute;
+      top: 1200px;
+      left: 1120px;
+      font-size: 23px;
+    }
+    .pp51{
+      position: absolute;
+      top: 1150px;
+      left: 1100px;
+      font-size: 15px;
+    }
+  }
+
+  .all00{
+    margin-top: 6800px;
+    position: relative;
+    .score01{
+      position: absolute;
+      top: 950px;
+      left: 195px;
+    }
+    .p52{
+      position: absolute;
+      top: 1350px;
+      left: 260px;
+      font-size: 23px;
+    }
+    .pp52{
+      position: absolute;
+      top: 1300px;
+      left: 230px;
+      font-size: 15px;
+    }
+    .album04{
+      position: absolute;
+      top: 950px;
+      left: 570px;
+    }
+    .p53{
+      position: absolute;
+      top: 1350px;
+      left: 720px;
+      font-size: 23px;
+    }
+    .pp53{
+      position: absolute;
+      top: 1300px;
+      left: 710px;
+      font-size: 15px;
+    }
+    .album03{
+      position: absolute;
+      top: 950px;
+      left: 990px;
+    }
+    .p54{
+      position: absolute;
+      top: 1350px;
+      left: 1050px;
+      font-size: 23px;
+    }
+    .pp54{
+      position: absolute;
+      top: 1300px;
+      left: 1130px;
+      font-size: 15px;
+    }
+  }
+  .all0{
+    position: relative;
+    margin-top: 8800px;
+    .album02{
+      position: absolute;
+      top: -500px;
+      left: 145px;
+    }
+    .p55{
+      position: absolute;
+      top: -100px;
+      left: 230px;
+      font-size: 23px;
+
+    }
+    .pp55{
+      position: absolute;
+      top: -150px;
+      left: 280px;
+      font-size: 15px;
+    }
+    .album01{
+      position: absolute;
+      top: -500px;
+      left: 570px;
+    }
+    .p56{
+      position: absolute;
+      top: -100px;
+      left: 660px;
+      font-size: 23px;
+    }
+    .pp56{
+      position: absolute;
+      top: -150px;
+      left: 680px;
+      font-size: 15px;
+    }
+  }
+
+
+  /* album-all */
+  .album-all04{
+    margin-top: 2200px;
+    position: relative;
+    .album-img12{
+      position: absolute;
+      top: -2150px;
+      left: 145px;
+    }
+    .album01{
+      position: absolute;
+      top: -1750px;
+      left: 240px;
+      font-size: 23px;
+    }
+    .aalbum01{
+      position: absolute;
+      top: -1800px;
+      left: 230px;
+      font-size: 15px;
+    }
+
+    .album-img11{
+      position: absolute;
+      top: -2150px;
+      left: 570px;
+    }
+    .album02{
+      position: absolute;
+      top: -1750px;
+      left: 680px;
+      font-size: 23px;
+    }
+    .aalbum02{
+      position: absolute;
+      top: -1800px;
+      left: 710px;
+      font-size: 15px;
+    }
+    .album-img10{
+      position: absolute;
+      top: -2150px;
+      left: 990px;
+    }
+    .album03{
+      position: absolute;
+      top: -1750px;
+      left: 1090px;
+      font-size: 23px;
+    }
+    .aalbum03{
+      position: absolute;
+      top: -1800px;
+      left: 1100px;
+      font-size: 15px;
+    }
+  }
+  .album-all03{
+    position: relative;
+    .album-img09{
+      position: absolute;
+      top: -1620px;
+      left: 145px;
+    }
+    .album04{
+      position: absolute;
+      top: -1220px;
+      left: 280px;
+      font-size: 23px;
+    }
+    .aalbum04{
+      position: absolute;
+      top: -1270px;
+      left: 250px;
+      font-size: 15px;
+    }
+    .album-img08{
+      position: absolute;
+      top: -1620px;
+      left: 570px;
+    }
+    .album05{
+      position: absolute;
+      top: -1220px;
+      left: 650px;
+      font-size: 23px;
+    }
+    .aalbum05{
+      position: absolute;
+      top: -1270px;
+      left: 720px;
+      font-size: 15px;
+    }
+    .album-img07{
+      position: absolute;
+      top: -1620px;
+      left: 990px;
+    }
+    .album06{
+      position: absolute;
+      top: -1220px;
+      left: 1050px;
+      font-size: 23px;
+    }
+    .aalbum06{
+      position: absolute;
+      top: -1270px;
+      left: 1130px;
+      font-size: 15px;
+    }
+  }
+  .album-all02{
+    position: relative;
+    .album-img06{
+      position: absolute;
+      top: -1090px;
+      left: 145px;
+    }
+    .album07{
+      position: absolute;
+      top: -690px;
+      left: 270px;
+      font-size: 23px;
+    }
+    .aalbum07{
+      position: absolute;
+      top: -740px;
+      left: 240px;
+      font-size: 15px;
+    }
+    .album-img05{
+      position: absolute;
+      top: -1090px;
+      left: 570px;
+    }
+    .album08{
+      position: absolute;
+      top: -690px;
+      left: 700px;
+      font-size: 23px;
+    }
+    .aalbum08{
+      position: absolute;
+      top: -740px;
+      left: 680px;
+      font-size: 15px;
+    }
+    .album-img04{
+      position: absolute;
+      top: -1090px;
+      left: 990px;
+    }
+    .album09{
+      position: absolute;
+      top: -690px;
+      left: 1140px;
+      font-size: 23px;
+    }
+    .aalbum09{
+      position: absolute;
+      top: -740px;
+      left: 1125px;
+      font-size: 15px;
+    }
+  }
+  .album-all01{
+    position: relative;
+    .album-img03{
+      position: absolute;
+      top: -560px;
+      left: 145px;
+    }
+    .album10{
+      position: absolute;
+      top: -160px;
+      left: 200px;
+      font-size: 23px;
+    }
+    .aalbum10{
+      position: absolute;
+      top: -210px;
+      left: 280px;
+      font-size: 15px;
+    }
+    .album-img02{
+      position: absolute;
+      top: -560px;
+      left: 570px;
+    }
+    .album11{
+      position: absolute;
+      top: -160px;
+      left: 660px;
+      font-size: 23px;
+    }
+    .aalbum11{
+      position: absolute;
+      top: -210px;
+      left:710px;
+      font-size: 15px;
+    }
+    .album-img01{
+      position: absolute;
+      top: -560px;
+      left: 990px;
+    }
+    .album12{
+      position: absolute;
+      top: -160px;
+      left: 1080px;
+      font-size: 23px;
+    }
+    .aalbum12{
+      position: absolute;
+      top: -210px;
+      left: 1120px;
+      font-size: 15px;
+    }
+  }
+  
+  /* single */
+  .single-all09{
+    margin-top: 4900px;
+    position: relative;
+    .single-img25{
+      position: absolute;
+      top: -4850px;
+      left: 145px;
+    }
+    .sin01{
+      position: absolute;
+      top: -4450px;
+      left: 210px;
+      font-size: 23px;
+    }
+    .ssin01{
+      position: absolute;
+      top: -4500px;
+      left: 250px;
+      font-size: 15px;
+    }
+    .single-img24{
+      position: absolute;
+      top: -4850px;
+      left: 570px;
+    }
+    .sin02{
+      position: absolute;
+      top: -4450px;
+      left: 695px;
+      font-size: 23px;
+
+    }
+    .ssin02{
+      position: absolute;
+      top: -4500px;
+      left: 680px;
+      font-size: 15px;
+    }
+    .single-img23{
+      position: absolute;
+      top: -4850px;
+      left: 990px;
+    }
+    .sin03{
+      position: absolute;
+      top: -4450px;
+      left: 1070px;
+      font-size: 23px;
+    }
+    .ssin03{
+      position: absolute;
+      top: -4500px;
+      left: 1110px;
+      font-size: 15px;
+    }
+  }
+  .single-all08{
+    position: relative;
+    .single-img22{
+      position: absolute;
+      top: -4320px;
+      left: 145px;
+    }
+    .sin04{
+      position: absolute;
+      top: -3920px;
+      left: 120px;
+      font-size: 23px;
+    }
+    .ssin04{
+      position: absolute;
+      top: -3970px;
+      left: 250px;
+      font-size: 15px;
+    }
+    .single-img21{
+      position: absolute;
+      top: -4320px;
+      left: 570px;
+    }
+    .sin05{
+      position: absolute;
+      top: -3920px;
+      left: 660px;
+      font-size: 23px;
+    }
+    .ssin05{
+      position: absolute;
+      top: -3970px;
+      left: 680px;
+      font-size: 15px;
+    }
+    .single-img20{
+      position: absolute;
+      top: -4320px;
+      left: 990px;
+    }
+    .sin06{
+      position: absolute;
+      top: -3920px;
+      left: 1090px;
+      font-size: 23px;
+    }
+    .ssin06{
+      position: absolute;
+      top: -3970px;
+      left: 1110px;
+      font-size: 15px;
+    }
+  }
+  .single-all07{
+    position: relative;
+    .single-img19{
+      position: absolute;
+      top: -3790px;
+      left: 145px;
+    }
+    .sin07{
+      position: absolute;
+      top: -3390px;
+      left: 280px;
+      font-size: 23px;
+    }
+    .ssin07{
+      position: absolute;
+      top: -3440px;
+      left: 250px;
+      font-size: 15px;
+    }
+    .single-img18{
+      position: absolute;
+      top: -3790px;
+      left: 570px;
+    }
+    .sin08{
+      position: absolute;
+      top: -3390px;
+      left: 695px;
+      font-size: 23px;
+    }
+    .ssin08{
+      position: absolute;
+      top: -3440px;
+      left: 680px;
+      font-size: 15px;
+    }
+    .single-img17{
+      position: absolute;
+      top: -3790px;
+      left: 990px;
+    }
+    .sin09{
+      position: absolute;
+      top: -3390px;
+      left: 1140px;
+      font-size: 23px;
+    }
+    .ssin09{
+      position: absolute;
+      top: -3440px;
+      left: 1110px;
+      font-size: 15px;
+    }
+  }
+  .single-all06{
+    position: relative;
+    .single-img16{
+      position: absolute;
+      top: -3260px;
+      left: 145px;
+    }
+    .sin10{
+      position: absolute;
+      top: -2860px;
+      left: 265px;
+      font-size:  23px;
+    }
+    .ssin10{
+      position: absolute;
+      top: -2910px;
+      left: 250px;
+      font-size: 15px;
+    }
+    .single-img15{
+      position: absolute;
+      top: -3260px;
+      left: 570px;
+    }
+    .sin11{
+      position: absolute;
+      top: -2860px;
+      left: 685px;
+      font-size: 23px;
+    }
+    .ssin11{
+      position: absolute;
+      top: -2910px;
+      left: 680px;
+      font-size: 15px;
+    }
+    .single-img14{
+      position: absolute;
+      top: -3260px;
+      left: 990px;
+    }
+    .sin12{
+      position: absolute;
+      top: -2860px;
+      left: 1080px;
+      font-size: 23px;
+    }
+    .ssin12{
+      position: absolute;
+      top: -2910px;
+      left: 1110px;
+      font-size: 15px;
+    }
+  }
+  .single-all05{
+    position: relative;
+    .single-img13{
+      position: absolute;
+      top: -2730px;
+      left: 145px;
+    }
+    .sin13{
+      position: absolute;
+      top: -2330px;
+      left: 275px;
+      font-size: 23px;
+    }
+    .ssin13{
+      position: absolute;
+      top: -2380px;
+      left: 250px;
+      font-size: 15px;
+    }
+    .single-img12{
+      position: absolute;
+      top: -2730px;
+      left: 570px;
+    }
+    .sin14{
+      position: absolute;
+      top: -2330px;
+      left: 695px;
+      font-size: 23px;
+    }
+    .ssin14{
+      position: absolute;
+      top: -2380px;
+      left: 680px;
+      font-size: 15px;
+    }
+    .single-img11{
+      position: absolute;
+      top: -2730px;
+      left: 990px;
+    }
+    .sin15{
+      position: absolute;
+      top: -2330px;
+      left: 1105px;
+      font-size: 23px;
+    }
+    .ssin15{
+      position: absolute;
+      top: -2380px;
+      left: 1100px;
+      font-size: 15px;
+    }
+  }
+  .single-all04{
+    position: relative;
+    .single-img10{
+      position: absolute;
+      top: -2200px;
+      left: 145px;
+    }
+    .sin16{
+      position: absolute;
+      top: -1800px;
+      left: 275px;
+      font-size: 23px;
+    }
+    .ssin16{
+      position: absolute;
+      top: -1850px;
+      left: 250px;
+      font-size: 15px;
+    }
+    .single-img09{
+      position: absolute;
+      top: -2200px;
+      left: 570px;
+    }
+    .sin17{
+      position: absolute;
+      left: 685px;
+      top: -1800px;
+      font-size: 23px;
+    }
+    .ssin17{
+      position: absolute;
+      top: -1850px;
+      left: 680px;
+      font-size: 15px;
+    }
+    .single-img08{
+      position: absolute;
+      top: -2200px;
+      left: 990px;
+    }
+    .sin18{
+      position: absolute;
+      top: -1800px;
+      left: 1125px;
+      font-size: 23px;
+    }
+    .ssin18{
+      position: absolute;
+      top: -1850px;
+      left: 1110px;
+      font-size: 15px;
+    }
+  }
+  .single-all03{
+    position: relative;
+    .single-img07{
+      position: absolute;
+      top: -1670px;
+      left: 145px;
+    }
+    .sin19{
+      position: absolute;
+      top: -1270px;
+      left: 240px;
+      font-size: 23px;
+    }
+    .ssin19{
+      position: absolute;
+      top: -1320px;
+      left: 250px;
+      font-size: 15px;
+    }
+    .single-img06{
+      position: absolute;
+      top: -1670px;
+      left: 570px;
+    }
+    .sin20{
+      position: absolute;
+      top: -1270px;
+      left: 705px;
+      font-size: 23px;
+    }
+    .ssin20{
+      position: absolute;
+      top: -1320px;
+      left: 680px;
+      font-size: 15px;
+    }
+    .single-img05{
+      position: absolute;
+      top: -1670px;
+      left: 990px;
+    }
+    .sin21{
+      position: absolute;
+      top: -1270px;
+      left: 1135px;
+      font-size: 23px;
+    }
+    .ssin21{
+      position: absolute;
+      top: -1320px;
+      left: 1110px;
+      font-size: 15px;
+    }
+  }
+  .single-all02{
+    position: relative;
+    .single-img04{
+      position: absolute;
+      top: -1140px;
+      left: 145px;
+    }
+    .sin22{
+      position: absolute;
+      top: -740px;
+      left: 250px;
+      font-size: 23px;
+    }
+    .ssin22{
+      position: absolute;
+      top: -790px;
+      left: 250px;
+      font-size: 15px;
+    }
+    .single-img03{
+      position: absolute;
+      top: -1140px;
+      left: 570px;
+    }
+    .sin23{
+      position: absolute;
+      top: -740px;
+      left: 705px;
+      font-size: 23px;
+    }
+    .ssin23{
+      position: absolute;
+      top: -790px;
+      left: 680px;
+      font-size: 15px;
+    }
+    .single-img02{
+      position: absolute;
+      top: -1140px;
+      left: 990px;
+    }
+    .sin24{
+      position: absolute;
+      top: -740px;
+      left: 1070px;
+      font-size: 23px;
+    }
+    .ssin24{
+      position: absolute;
+      top: -790px;
+      left: 1110px;
+      font-size: 15px;
+    }
+
+  }
+  .single-all01{
+    position: relative;
+    .single-img01{
+      position: absolute;
+      top: -610px;
+      left: 145px;
+    }
+    .sin25{
+      position: absolute;
+      top: -210px;
+      left: 270px;
+      font-size: 23px;
+    }
+    .ssin25{
+      position: absolute;
+      top: -260px;
+      left: 250px;
+      font-size: 15px;
+    }
+  }
+
+  .single img{
+    width: 340px;
+  }
+  /* album */
+  .album img{
+    width: 340px; 
+  }
+  /* comic2 */
+  .comic2 img{
+    width: 245px;
+  }
+
+  /* novel */
+  .novel img{
+    width: 245px;
+  }
+  /* ep */
+  .ep img{
+    width: 340px;
+  }
+
+  /* comic */
+  .comic img{
+    width: 245px;
+  }
+  
+  /* card */
+  .card img{
+    width: 295px;
+  }
+  /* score */
+  .score img{
+    width: 245px;
+  }
+  /* illust-book */
+  .illust-book img{
+    width: 340px;
+  }
+
+  /* movie */
+  .movie img{
+    width: 295px;
+  }
+  /* live-in-animation */
+  .live-in-animation img{
+    width: 245px;
+  }
+
+
+  /* other */
+  .other07{
+    margin-top: 3800px;
+    position: relative;
+    .other-img01{
+      position: absolute;
+      top: -3750px;
+      left: 200px;
+    }
+    .ot01{
+      position: absolute;
+      top: -3350px;
+      left: 230px;
+      font-size: 23px;
+    }
+    .oot01{
+      position: absolute;
+      top: -3400px;
+      left: 300px;
+      font-size: 15px;
+    }
+    .other-img02{
+      position: absolute;
+      top: -3750px;
+      left: 630px;
+    }
+    .ot02{
+      position: absolute;
+      top: -3350px;
+      left: 630px;
+      font-size: 23px;
+    }
+    .oot02{
+      position: absolute;
+      top: -3400px;
+      left: 710px;
+      font-size: 15px;
+    }
+    .other-img03{
+      position: absolute;
+      top: -3750px;
+      left: 1050px;
+    }
+    .ot03{
+      position: absolute;
+      top: -3350px;
+      left: 1055px;
+      font-size: 23px;
+    }
+    .oot03{
+      position: absolute;
+      top: -3400px;
+      left: 1125px;
+      font-size: 15px;
+    }
+  }
+  .other06{
+    position: relative;
+    .other-img04{
+      position: absolute;
+      top: -3220px;
+      left: 200px;
+    }
+    .ot04{
+      position: absolute;
+      top: -2820px;
+      left: 230px;
+      font-size: 23px;
+    }
+    .oot04{
+      position: absolute;
+      top: -2870px;
+      left: 300px;
+      font-size: 15px;
+    }
+    .other-img05{
+      position:   absolute;
+      top: -3220px;
+      left: 630px;
+    }
+    .ot05{
+      position: absolute;
+      top: -2820px;
+      left: 650px;
+      font-size: 23px;
+    }
+    .oot05{
+      position: absolute;
+      top: -2870px;
+      left: 710px;
+      font-size: 15px;
+    }
+    .other-img06{
+      position: absolute;
+      top: -3220px;
+      left: 1050px;
+    }
+    .ot06{
+      position: absolute;
+      top: -2820px;
+      left: 1095px;
+      font-size: 23px;
+    }
+    .oot06{
+      position: absolute;
+      top: -2870px;
+      left: 1160px;
+      font-size: 15px;
+    }
+  }
+  .other05{
+    position: relative;
+    .other-img07{
+      position: absolute;
+      top: -2690px;
+      left: 200px;
+    }
+    .ot07{
+      position: absolute;
+      top: -2290px;
+      left: 210px;
+      font-size: 23px;
+    }
+    .oot07{
+      position: absolute;
+      top: -2340px;
+      left: 280px;
+      font-size: 15px;
+    }
+    .other-img08{
+      position: absolute;
+      top: -2690px;
+      left: 630px;
+    }
+    .ot08{
+      position: absolute;
+      top: -2290px;
+      left: 660px;
+      font-size: 23px;
+    }
+    .oot08{
+      position: absolute;
+      left: 730px;
+      top: -2340px;
+      font-size: 15px;
+    }
+    .other-img09{
+      position: absolute;
+      top: -2690px;
+      left: 1030px;
+    }
+    .ot09{
+      position: absolute;
+      top: -2290px;
+      left: 1010px;
+      font-size: 23px;
+    }
+    .oot09{
+      position: absolute;
+      top: -2340px;
+      left: 1130px;
+      font-size: 15px;
+    }
+  }
+  .other04{
+    position: relative;
+    .other-img10{
+      position: absolute;
+      top: -2160px;
+      left: 170px;
+    }
+    .ot10{
+      position: absolute;
+      top: -1760px;
+      left: 200px;
+      font-size: 23px;
+    }
+    .oot10{
+      position: absolute;
+      top: -1810px;
+      left: 280px;
+      font-size: 15px;
+    }
+    .other-img11{
+      position: absolute;
+      top: -2160px;
+      left: 630px;
+    }
+    .ot11{
+      position: absolute;
+      top: -1760px;
+      left: 660px;
+      font-size: 23px;
+    }
+    .oot11{
+      position: absolute;
+      top: -1810px;
+      left: 730px;
+      font-size: 15px;
+    }
+    .other-img12{
+      position: absolute;
+      top: -2160px;
+      left: 1050px;
+    }
+    .ot12{
+      position: absolute;
+      top: -1760px;
+      left: 1010px;
+      font-size: 23px;
+    }
+    .oot12{
+      position: absolute;
+      top: -1810px;
+      left: 1140px;
+      font-size: 15px;
+    }
+  }
+  .other03{
+    position: relative;
+    .other-img13{
+      position: absolute;
+      top: -1630px;
+      left: 200px;
+    }
+    .ot13{
+      position: absolute;
+      top: -1230px;
+      left: 210px;
+      font-size: 23px;
+    }
+    .oot13{
+      position: absolute;
+      top: -1280px;
+      left: 280px;
+      font-size: 15px;
+    }
+    .other-img14{
+      position: absolute;
+      top: -1630px;
+      left: 630px;
+    }
+    .ot14{
+      position: absolute;
+      top: -1230px;
+      left: 650px;
+      font-size: 23px;
+    }
+    .oot14{
+      position: absolute;
+      top: -1280px;
+      left: 710px;
+      font-size: 15px;
+    }
+    .other-img15{
+      position: absolute;
+      top: -1630px;
+      left: 1050px;
+    }
+    .ot15{
+      position: absolute;
+      top: -1230px;
+      left: 1110px;
+      font-size: 23px;
+    }
+    .oot15{
+      position: absolute;
+      top: -1280px;
+      left: 1080px;
+      font-size: 15px;
+    }
+  }
+  .other02{
+    position: relative;
+    .other-img16{
+      position: absolute;
+      top: -1100px;
+      left: 200px;
+    }
+    .ot16{
+      position: absolute;
+      top: -700px;
+      left: 278px;
+      font-size: 23px;
+    }
+    .oot16{
+      position: absolute;
+      top: -750px;
+      left: 280px;
+      font-size: 15px;
+    }
+    .other-img17{
+      position: absolute;
+      top: -1100px;
+      left: 630px;
+    }
+    .ot17{
+      position: absolute;
+      top: -700px;
+      left: 680px;
+      font-size: 23px;
+    }
+    .oot17{
+      position: absolute;
+      top: -750px;
+      left: 665px;
+      font-size: 15px;
+    }
+    .other-img18{
+      position: absolute;
+      top: -1050px;
+      left: 1010px;
+    }
+    .ot18{
+      position: absolute;
+      top: -700px;
+      left: 1140px;
+      font-size: 23px;
+    }
+    .oot18{
+      position: absolute;
+      top: -750px;
+      left: 1130px;
+      font-size: 15px;
+    }
+  }
+  .other01{
+    position: relative;
+    .other-img19{
+      position: absolute;
+      top: -570px;
+      left: 200px;
+    }
+    .ot19{
+      position: absolute;
+      top: -170px;
+      left: 250px;
+      font-size: 23px;
+    }
+    .oot19{
+      position: absolute;
+      top: -220px;
+      left: 230px;
+      font-size: 15px;
+    }
+  }
+
+
+
+
+
+  .farst-img{
+    display: block;
+    margin: 20px auto;
+    width: 200px;
+  }
+
+  .content-box {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #000;
+}
+  
+
+hr{
+  color: #5b5959d7;
+}
+.hidden {
+    display: none;
+}
+.visible {
+    opacity: 1;
+}
+.buttonall{
+  border-bottom: solid 1px rgba(70, 69, 69, 0.648);
+  text-align: center;
+}
+.button {
+  font-size: 25px;
+  background-color: #000;
+  color: #FFF;
+  width: 150px;
+
+  height: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border:  none; /* ボタンの枠を消す */
+  outline: none; /* フォーカス時の枠を消す */
+}
+.button:hover {
+    background-color: rgba(154, 153, 153, 0.2); /* ホバー時の色 */
+    color: #FFF
+}
+.button.active {
+    background-color: rgba(154, 153, 153, 0.2);
+    color: #FFF
+}
+
+h2{
+  color: white;
+  font-size: 30px;
+}
+.content-box a{
+    text-decoration: none; /* デフォルトの下線を非表示にする */
+    color: #fff; /* 文字色 */
+    background-image: linear-gradient(90deg, #fff, #fff); /* 線の色 */
+    background-repeat: no-repeat;
+    background-position: left bottom; /* 線の起点を左・下に設定 */
+    background-size: 0 1px; /* 線の横幅を0、縦幅を1pxに */
+    transition: background-size 0.6s; /* 線を伸ばすアニメーション実行時間を指定 */
+  }
+  
+
+.content-box a:hover{
+  background-size: 100% 1px; /* 線の横幅を100%にする */
+}
+
+.content-box a{
+  font-size: 25px;
+}
+.content-box p{
+  font-size: 25px;
+}
+
+/* slider */
+
+.slider {
+  margin-top: 150px;
+  margin-left: 830px;
+  width: 80%;
+  max-width: 400px;
+  overflow: hidden;
+  position: relative;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  margin-top: 80px;
+}
+
+.slide {
+  min-width: 100%;
+
+}
+
+.slide img {
+  width: 400px;
+  height: auto;
+  display: block;
+}
+
+.top-remove{
+  text-align: center;
+  margin-top: 10px;
+}
+.top-remove img{
+  width: 40px;
+}
+
+
+.icon-left{
+  position: absolute;
+  top: 1550px;
+  left: 830px;
+  box-shadow: none; /* 影を消す */
+  border: none; /* 枠線を消す */
+  outline: none; /* クリック時の枠線を消す */
+  background: transparent; /* 背景色を透明にする */
+}
+.icon-left i{
+  color: #fff;
+  font-size: 20px;
+}
+.icon-right{
+  position: absolute;
+  top: 1550px;
+  left: 1215px;
+  box-shadow: none; 
+  border: none; 
+  outline: none; 
+  background: transparent; 
+}
+.icon-right i{
+  color: #fff;
+  font-size: 20px;
+}
+
+
+.carousel{
+  margin-top: 1350px;
+}
+
+/* 一番下のスライド */
+.carouselSlide {
+  position: relative;
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+}
+ul{
+margin: 0;
+}
+.carouselSlide.right {
+  margin-top: 0;
+  ul {
+      padding: 0;
+      width: 100%;
+      display: flex;
+      flex-shrink: 0;
+
+      &:first-child {
+          animation: slideLeft1 60s -30s linear infinite;
+      }
+      &:last-child {
+          animation: slideLeft2 60s linear infinite;
+      }
+
+      li {
+          display: inline-block;
+          width: 100%;
+          min-width: 150px;
+          list-style: none;
+          text-align: center;
+
+          img {
+              display: block;
+              width: 100%;
+              height: auto;
+          }
+      }
+  }
+  
+  &:hover {
+      ul {
+          animation-play-state: paused;
+      }
+  }
+}
+
+.carouselSlide.left {
+  margin-top: 0;
+  ul {
+      padding: 0;
+      width: 100%;
+      display: flex;
+      flex-shrink: 0;
+
+      &:first-child {
+          animation: slideRight1 60s -30s linear infinite;
+      }
+      &:last-child {
+          animation: slideRight2 60s linear infinite;
+      }
+
+      li {
+          display: inline-block;
+          width: 100%;
+          min-width: 150px;
+          list-style: none;
+          text-align: center;
+
+          img {
+              display: block;
+              width: 100%;
+              height: auto;
+          }
+      }
+  }
+  
+  &:hover {
+      ul {
+          animation-play-state: paused;
+      }
+  }
+}
+
+@keyframes slideLeft1 {
+  0% {
+      transform: translateX(-100%);
+  }
+
+  to {
+      transform: translateX(100%);
+  }
+}
+
+@keyframes slideLeft2 {
+  0% {
+      transform: translateX(-200%);
+  }
+
+  to {
+      transform: translateX(0);
+  }
+}
+
+@keyframes slideRight1 {
+  0% {
+      transform: translateX(100%);
+  }
+
+  to {
+      transform: translateX(-100%);
+  }
+}
+
+@keyframes slideRight2 {
+  0% {
+      transform: translateX(0);
+  }
+
+  to {
+      transform: translateX(-200%);
+  }
+}
+
+
+.end-icon li{
+  padding: 0 10px;
+}
+.end-icon{
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+.end-icon ul li a {
+	font-size: 20px;
+	text-decoration: none;
+	color:#fff;
+  margin-right: 20px;
+  transition: all 0.5s;
+}
+.end-icon a:hover {color: #999;}
+.fa-brands{
+  font-size: 40px;
+}
+
+
+.end{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 0 40px;
+}
+.end-img{
+  width: 200px;
+}
+.end > p{
+  font-size: 30px;
+  color: #FFF;
+  margin-top: 20px;
+}
+.footer{
+  text-align: center;
+  margin-top: 20px;
+}
+.footer p{
+  font-size: 16px;
+  color: #FFF;
+}
+.guideline{
+  display: block;
+  color: #FFF;
+  margin-top: 16px;
+  text-decoration: none;
+  background-image: linear-gradient(90deg, #fff, #fff);
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 0 1px;
+  transition: background-size 0.6s;
+}
+.guideline:hover{
+  background-size: 100% 1px;
+}
+
+
+/* ===== DISCOGRAPHY ITEM GRID FLEXBOX OVERRIDE ===== */
+
+/* ALL content rows → flex center */
+.all17, .all16, .all15, .all14, .all13, .all12, .all11, .all10,
+.all09, .all08, .all07, .all06, .all05, .all04, .all03, .all02,
+.all01, .all00, .all0,
+.album-all04, .album-all03, .album-all02, .album-all01,
+.single-all09, .single-all08, .single-all07, .single-all06,
+.single-all05, .single-all04, .single-all03, .single-all02, .single-all01,
+.other07, .other06, .other05, .other04, .other03, .other02, .other01 {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: flex-start !important;
+  flex-wrap: wrap !important;
+  gap: 40px !important;
+  padding: 30px 0 !important;
+  margin-top: 0 !important;
+  margin-left: 0 !important;
+  position: static !important;
+}
+
+/* Item type containers → vertical column, centered */
+.single, .album, .novel, .ep, .comic, .comic2, .card,
+.score, .illust-book, .movie, .live-in-animation {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+/* Reset absolute positions on all images and text inside content */
+.content-box img,
+.content-box p {
+  position: static !important;
+}
+
+

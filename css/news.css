@@ -1,0 +1,819 @@
+html{
+  scroll-behavior: smooth;
+} 
+body{
+  width: 100%;
+  margin: 0;
+}
+.fade-out {
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+}
+
+.fade-out-active {
+    opacity: 0;
+}
+
+.fade-in {
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+}
+
+.fade-in-active {
+    opacity: 1;
+}
+.dotgothic16-regular,.neon,.next p,.day p{
+    font-family: "DotGothic16", sans-serif;
+    font-style: normal;
+  }
+  
+  .baskervville-sc-regular ,.samplearea p,.eve-input input,nav,.top-icon p,button,h2,.content-box a,.end p,.more a,.content-box p{
+    font-family: "Baskervville SC", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .gallery-cell{
+    position:relative;
+    padding: 15px;
+    margin-top: 0;
+  }
+
+  .gallery-cell p{
+    position: absolute;
+    bottom: 20px;
+    left: 100px;
+  }
+  .black p{
+    color: black;
+  }
+  .white p{
+    color: white;
+  }
+  .next-news{
+    display: block;
+    text-align: right;
+    margin-top: 30px;
+    margin-bottom: 60px;
+  }
+
+  .more{
+    position: absolute;
+    top: 520px;
+    left: 450px;
+  }
+  .more a{
+    text-decoration: none;
+    color: #FFF;
+    background-image: linear-gradient(90deg, #fff, #fff); /* 線の色 */
+    background-repeat: no-repeat;
+    background-position: left bottom; /* 線の起点を左・下に設定 */
+    background-size: 0 1px; /* 線の横幅を0、縦幅を1pxに */
+    transition: background-size 0.6s; /* 線を伸ばすアニメーション実行時間を指定 */
+  }
+  
+
+.more a:hover{
+  background-size: 100% 1px; /* 線の横幅を100%にする */
+}
+
+  .top-icon img{  
+  width: 100%;
+
+  }
+  .top-icon{
+    text-align: center;
+  }
+  .top-icon p{
+    position: absolute;
+    color: white;
+    top: 220px;
+    left: 590px;
+    font-size: 30px;
+  }
+  .gallery-block{
+    position: relative;
+  }
+
+  .eve-top{
+    width: 100%;
+  }
+  .eve-top img{
+    width: 400px;
+  }
+  .eve-top-img{
+    text-align: center;
+  }
+  .eve-top-img img{
+    width: 1000px;
+  }
+  
+  #g-nav.panelactive{
+    /*position:fixed;にし、z-indexの数値を大きくして前面へ*/
+    position:fixed;
+    z-index: 999;
+  top: 0;
+  width:100%;
+    height: 100vh;
+}
+
+/*丸の拡大*/
+.circle-bg{
+    position: fixed;
+  z-index:3;
+    /*丸の形*/
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background:#000;
+    /*丸のスタート位置と形状*/
+  transform: scale(0);/*scaleをはじめは0に*/
+    right:-50px;
+    top:calc(50% - 50px);/*50%から円の半径を引いた値*/
+    transition: all .6s;/*0.6秒かけてアニメーション*/
+}
+
+.circle-bg.circleactive{
+  transform: scale(50);/*クラスが付与されたらscaleを拡大*/
+}
+
+/*ナビゲーションの縦スクロール*/
+#g-nav-list{
+    display: none;/*はじめは表示なし*/
+    /*ナビの数が増えた場合縦スクロール*/
+    position: fixed;
+    z-index: 999; 
+    width: 100%;
+    height: 100vh;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+#g-nav.panelactive #g-nav-list{
+    display: block; /*クラスが付与されたら出現*/
+}
+
+/*ナビゲーション*/
+#g-nav ul {
+  opacity: 0;/*はじめは透過0*/
+    /*ナビゲーション天地中央揃え※レイアウトによって調整してください。不必要なら削除*/
+    position: absolute;
+    z-index: 999;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+ul hr{
+  opacity: 0;
+  z-index: 990;
+  color: #FFF;
+}
+#g-nav ul hr{
+animation-name:gnaviAnime;
+animation-duration:1s;
+animation-delay:.2s;/*0.2 秒遅らせて出現*/
+animation-fill-mode:forwards;
+opacity:0;
+text-align: center;
+}
+@keyframes gnaviAnime{
+0% {
+opacity: 0;
+}
+100% {
+opacity: 1;
+}
+}
+
+/*背景が出現後にナビゲーションを表示*/
+#g-nav.panelactive ul {
+    opacity:1;
+}
+
+/* 背景が出現後にナビゲーション li を表示※レイアウトによって調整してください。不必要なら削除*/
+#g-nav.panelactive ul li{
+animation-name:gnaviAnime;
+animation-duration:1s;
+animation-delay:.2s;/*0.2 秒遅らせて出現*/
+animation-fill-mode:forwards;
+opacity:0;
+}
+@keyframes gnaviAnime{
+0% {
+opacity: 0;
+}
+100% {
+opacity: 1;
+}
+}
+
+
+/*リストのレイアウト設定*/
+#g-nav li{
+  text-align: center; 
+  list-style: none;
+}
+
+#g-nav li a{
+  color: #fff;
+  text-decoration: none;
+  padding:10px;
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+  font-size: 30px;
+}
+/*========= ボタンのためのCSS ===============*/
+.openbtn1{
+  position:fixed;
+  top:10px;
+  right: 10px;
+  z-index: 9999;/*ボタンを最前面に*/
+  cursor: pointer;
+    width: 50px;
+    height:50px;
+}
+  
+  ul li a{
+    text-decoration: none; /* デフォルトの下線を非表示にする */
+    color: #fff; /* 文字色 */
+    background-image: linear-gradient(90deg, #fff, #fff); /* 線の色 */
+    background-repeat: no-repeat;
+    background-position: left bottom; /* 線の起点を左・下に設定 */
+    background-size: 0 1px; /* 線の横幅を0、縦幅を1pxに */
+    transition: background-size 0.6s; /* 線を伸ばすアニメーション実行時間を指定 */
+  }
+  
+  ul li a:hover {
+    background-size: 100% 1px; /* 線の横幅を100%にする */
+  }
+
+/*×に変化*/  
+.openbtn1 span{
+    display: inline-block;
+    transition: all .4s;
+    position: absolute;
+    left: 14px;
+    height: 3px;
+    border-radius: 2px;
+  background-color: #fff;
+    width: 45%;
+  }
+
+.openbtn1 span:nth-of-type(1) {
+  top:15px; 
+}
+
+.openbtn1 span:nth-of-type(2) {
+  top:23px;
+}
+
+.openbtn1 span:nth-of-type(3) {
+  top:31px;
+}
+
+.openbtn1.active span:nth-of-type(1) {
+    top: 18px;
+    left: 18px;
+    transform: translateY(6px) rotate(-45deg);
+    width: 30%;
+}
+
+.openbtn1.active span:nth-of-type(2) {
+  opacity: 0;
+}
+
+.openbtn1.active span:nth-of-type(3){
+    top: 30px;
+    left: 18px;
+    transform: translateY(-6px) rotate(45deg);
+    width: 30%;
+}
+
+
+
+
+
+  .timer{
+    margin-top: 200px;
+  }
+  
+  #CDT {
+width: 100%;
+text-align: center;
+font-size: 90px;
+font-weight: bold;
+color: #ffffff;
+font-family: 'Noto Sans JP', sans-serif;}
+#CDT01 {
+width: 100%;
+text-align: center;
+font-size: 49px;
+font-weight: bold;
+color: #ffffff;
+font-family: 'Noto Sans JP', sans-serif;
+}
+
+.tl {
+color: #ffffff;
+font-size: 28px;
+font-weight: 600;
+text-align: center;
+margin: 0;
+line-height: 1.5;
+
+}
+
+.timer {
+  position: relative;
+    background: #000;
+    margin: 5px auto;
+    padding: 5px;
+    text-align: center;
+    font-size: 2.5rem;
+    color: #fff;
+    line-height: 1.5;
+    font-weight: 600;
+    font-family: 'Times New Roman', Times, serif
+    
+}
+/* font */
+
+
+body {
+    background: #000; /* 背景色を黒に指定 */
+  }
+
+  #CDT{
+    width: 100%;
+  }
+  .neon {
+    position: absolute;
+    color: #FFF;     /* 文字色を白に指定 */
+    font-size: 50px; /* 適度な文字サイズを指定 */
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 70px #fff, 0 0 80px #fff, 0 0 100px #fff, 0 0 150px #ffffff; /* 薄い紫色の光を再現 */
+    top: 100px;
+    left: 650px;
+  }
+  .next p{
+    position: absolute;
+    font-size: 30px;
+    text-align: center;
+    top: 0;
+    left: 600px;
+  }
+  .day p{       
+    position: absolute;
+    font-size: 45px;
+    left: 690px;
+    top: 200px;
+  }
+  .samplearea{
+    position: relative;
+    margin-top: -200px;
+  }
+  .eve{
+    position: absolute;
+    top: 400px;
+    left: 400px;
+  }
+  .eve-img img{
+    position: absolute;
+    top: 400px;
+    left: 700px;
+    z-index: 0;
+  }
+  
+
+
+  input{
+    font-size: 30px;
+    border-radius: 30px;
+    background-color: black;
+    color: #FFF;
+    display: flex;
+    z-index: 10px;
+    border: none;
+  }
+  
+
+.eve-input input{
+  color:#FFF;
+  font-size:120%;
+  transition: .3s;
+}
+.eve-input input::after{
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: #FFF;
+  transition: .3s;
+}
+.eve-input input:hover::after{
+  width: 100%;
+}
+
+
+
+  .eve-p{
+    position:absolute ;
+    color: #FFF;
+    top: -90px;
+    left: 0px;
+    font-size: 80px;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+.dotgothic16-regular,#CDT,#CDT00 {
+    font-family: "DotGothic16", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  /* black */
+  .black{
+    display:block;
+  }
+  .black img{
+    filter: saturate(0%);
+    transition:0.3s;
+  }
+  .black:hover img{
+    filter: saturate(100%);
+  }
+
+  /* white */
+
+  .white img{
+    filter: saturate(0%);
+    transition:0.3s;
+  }
+  .white:hover img{
+    filter: saturate(100%);
+  }
+
+
+  .news-top{
+    text-align: center;
+    height: 100px;
+    margin-bottom: 60px;
+    margin-top: 60px;
+    background-color: #3030306b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .news-top h2{
+    position: static;
+  }
+  /* box */
+  .information{
+    margin: 0 auto;
+    width: 800px;
+    max-width: 95%;
+    margin-top: 20px;
+    background-color: #00000000;
+  }
+  .information h2{
+    font-size: 30px;
+  }
+  .slider h2{
+    font-size: 30px;
+    margin-top: 0px;
+    margin-left: 75px;
+  }
+  .farst-img{
+    display: block;
+    margin: 20px auto;
+    width: 200px;
+  }
+
+  .content-box {
+    color: #fff;
+    margin-top: 10px;
+    width: 1000px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #000;
+
+}
+
+hr{
+  color: #5b5959d7;
+}
+.content-box hr {
+  width: 400px;
+  max-width: 80%;
+  margin: 10px auto;
+}
+.hidden {
+    display: none;
+}
+.visible {
+    opacity: 1;
+}
+.button {
+  font-size: 20px;
+  background-color: #000;
+  color: #FFF;
+  width: 130px;
+
+  height: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border:  none; /* ボタンの枠を消す */
+  border-bottom: solid 3px #3434349c;
+  outline: none; /* フォーカス時の枠を消す */
+}
+.button:hover {
+    background-color: rgba(154, 153, 153, 0.2); /* ホバー時の色 */
+    color: #FFF
+}
+.button.active {
+    background-color: rgba(154, 153, 153, 0.2);
+    color: #FFF
+}
+h2{
+  color: white;
+  font-size: 30px;
+}
+.content-box a{
+    text-decoration: none; /* デフォルトの下線を非表示にする */
+    color: #fff; /* 文字色 */
+    background-image: linear-gradient(90deg, #fff, #fff); /* 線の色 */
+    background-repeat: no-repeat;
+    background-position: left bottom; /* 線の起点を左・下に設定 */
+    background-size: 0 1px; /* 線の横幅を0、縦幅を1pxに */
+    transition: background-size 0.6s; /* 線を伸ばすアニメーション実行時間を指定 */
+  }
+  
+
+.content-box a:hover{
+  background-size: 100% 1px; /* 線の横幅を100%にする */
+}
+
+.content-box a{
+  font-size: 25px;
+}
+.content-box p{
+  font-size: 25px;
+}
+
+/* slider */
+
+.slider {
+  margin-top: 150px;
+  margin-left: 830px;
+  width: 80%;
+  max-width: 400px;
+  overflow: hidden;
+  position: relative;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  margin-top: 80px;
+}
+
+.slide {
+  min-width: 100%;
+
+}
+
+.slide img {
+  width: 400px;
+  height: auto;
+  display: block;
+}
+
+.top-remove{
+  text-align: center;
+  margin-top: 10px;
+}
+.top-remove img{
+  width: 40px;
+}
+
+
+.icon-left{
+  position: absolute;
+  top: 1550px;
+  left: 830px;
+  box-shadow: none; /* 影を消す */
+  border: none; /* 枠線を消す */
+  outline: none; /* クリック時の枠線を消す */
+  background: transparent; /* 背景色を透明にする */
+}
+.icon-left i{
+  color: #fff;
+  font-size: 20px;
+}
+.icon-right{
+  position: absolute;
+  top: 1550px;
+  left: 1215px;
+  box-shadow: none; 
+  border: none; 
+  outline: none; 
+  background: transparent; 
+}
+.icon-right i{
+  color: #fff;
+  font-size: 20px;
+}
+
+
+
+
+/* 一番下のスライド */
+
+.carouselSlide {
+  position: relative;
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+}
+ul{
+margin: 0;
+}
+.carouselSlide.right {
+  margin-top: 0;
+  ul {
+      padding: 0;
+      width: 100%;
+      display: flex;
+      flex-shrink: 0;
+
+      &:first-child {
+          animation: slideLeft1 60s -30s linear infinite;
+      }
+      &:last-child {
+          animation: slideLeft2 60s linear infinite;
+      }
+
+      li {
+          display: inline-block;
+          width: 100%;
+          min-width: 150px;
+          list-style: none;
+          text-align: center;
+
+          img {
+              display: block;
+              width: 100%;
+              height: auto;
+          }
+      }
+  }
+  
+  &:hover {
+      ul {
+          animation-play-state: paused;
+      }
+  }
+}
+
+.carouselSlide.left {
+  margin-top: 0;
+  ul {
+      padding: 0;
+      width: 100%;
+      display: flex;
+      flex-shrink: 0;
+
+      &:first-child {
+          animation: slideRight1 60s -30s linear infinite;
+      }
+      &:last-child {
+          animation: slideRight2 60s linear infinite;
+      }
+
+      li {
+          display: inline-block;
+          width: 100%;
+          min-width: 150px;
+          list-style: none;
+          text-align: center;
+
+          img {
+              display: block;
+              width: 100%;
+              height: auto;
+          }
+      }
+  }
+  
+  &:hover {
+      ul {
+          animation-play-state: paused;
+      }
+  }
+}
+
+@keyframes slideLeft1 {
+  0% {
+      transform: translateX(-100%);
+  }
+
+  to {
+      transform: translateX(100%);
+  }
+}
+
+@keyframes slideLeft2 {
+  0% {
+      transform: translateX(-200%);
+  }
+
+  to {
+      transform: translateX(0);
+  }
+}
+
+@keyframes slideRight1 {
+  0% {
+      transform: translateX(100%);
+  }
+
+  to {
+      transform: translateX(-100%);
+  }
+}
+
+@keyframes slideRight2 {
+  0% {
+      transform: translateX(0);
+  }
+
+  to {
+      transform: translateX(-200%);
+  }
+}
+
+
+.end-icon li{
+  padding: 0 10px;
+}
+.end-icon{
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+.end-icon ul li a {
+	font-size: 20px;
+	text-decoration: none;
+	color:#fff;
+  margin-right: 20px;
+  transition: all 0.5s;
+}
+.end-icon a:hover {color: #999;}
+.fa-brands{
+  font-size: 40px;
+}
+
+
+.end{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 0 40px;
+}
+.end-img{
+  width: 200px;
+}
+.end > p{
+  font-size: 30px;
+  color: #FFF;
+  margin-top: 20px;
+}
+.footer{
+  text-align: center;
+  margin-top: 20px;
+}
+.footer p{
+  font-size: 16px;
+  color: #FFF;
+}
+.guideline{
+  display: block;
+  color: #FFF;
+  margin-top: 16px;
+  text-decoration: none;
+  background-image: linear-gradient(90deg, #fff, #fff);
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 0 1px;
+  transition: background-size 0.6s;
+}
+.guideline:hover{
+  background-size: 100% 1px;
+}

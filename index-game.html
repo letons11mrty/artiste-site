@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eve an Official site</title>
+    <script src="js/animation.js" defer></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baskervville+SC&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+<link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/reset.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/css/modaal.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+    <link rel="stylesheet" href="css/game.css">
+    <script src="js/game.js" defer></script>
+</head>
+<body class="fade-in">
+  <div class="top" id="TOP"></div>
+    <div class="openbtn1"><span></span><span></span><span></span></div>
+    <nav id="g-nav">
+        <div id="g-nav-list"><!--ナビの数が増えた場合縦スクロールするためのdiv※不要なら削除-->
+            <ul>
+                <li><a href="index.html">TOP</a></li>  
+                <hr>
+                <li><a href="index-news.html">NEWS</a></li>
+                <li><a href="index-live.html">LIVE</a></li>
+                <hr>
+                <li><a href="idnex-discography.html">DISCOGRAPHY</a></li>
+                <li><a href="index-profile.html">PROFILE</a></li>
+                <hr>
+                <li><a href="index-game.html">ALBUM PAZZULE</a></li>
+                <li><a href="https://eveofficialstore.com/"target="blank">GOODS</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="circle-bg"></div>
+    <div class="circle-bg"></div>
+    <div class="header">
+        <h1>画像パズル</h1>
+        <p>※ランダム更新はF5を押してほしいです</p>
+
+        <div class="selectors">
+            <div id="image-selector-container">
+                <label for="image-selector">画像を選択:</label>
+                <select id="image-selector">
+                  <option value="img/img_tohiko.jpg">逃避行</option>
+                  <option value="img/img_pray.jpg">pray</option>
+                  <option value="img/img_fightsong.jpg">ファイトソング</option>
+                  <!-- 他の画像オプションを追加 -->
+                </select>
+            </div>
+            <div id="difficulty-selector-container">
+                <label for="difficulty-selector">難易度を選択:</label>
+                <select id="difficulty-selector">
+                    <option value="3">下級 (3x3)</option>
+                    <option value="5">中級 (5x5)</option>
+                    <option value="10">上級 (10x10)</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div id="puzzle-container"></div>
+    <img id="hint-image" src="" alt="ヒント画像">
+    <p>※10秒になるとヒント表示ボタンが左に出ます</p>
+    <button id="reset-button">もう一度</button>
+    <button id="hint-button">ヒントを表示</button>
+
+    <div id="ranking-container">
+      <div id="username-container">
+        <label for="username" class="user-label">ユーザー名:</label>
+        <input type="text" id="username" name="username">
+      </div>
+  
+      <div class="ranking-div">
+        <h2>ランキング</h2>
+        <h3>下級</h3>
+        <ol id="ranking-list-easy"></ol>
+        <h3>中級</h3>
+        <ol id="ranking-list-medium"></ol>
+        <h3>上級</h3>
+        <ol id="ranking-list-hard"></ol>
+      </div>
+    </div>
+
+    
+  <div class="top-remove"><a href="#TOP"><img src="img/top-remove.png" alt=""></a></div>
+  <nav>
+      <ul class="end-icon">
+          <li><a href="https://www.instagram.com/eve_harapeco/"><i class="fa-brands fa-square-instagram"></i></a></li>
+          <li><a href="https://x.com/oo0eve0oo?lang=ja"><i class="fa-brands fa-square-twitter"></i></a></li>
+          <li><a href="https://line.me/R/ti/p/@oo0eve0oo?from=page&openQrModal=true&searchId=oo0eve0oo"><i class="fa-brands fa-line"></i></a></li>
+          <li><a href="https://www.youtube.com/user/ooo0eve0ooo"><i class="fa-brands fa-youtube"></i></a></li>
+          <li><a href="https://www.tiktok.com/?_r=1"><i class="fa-brands fa-tiktok"></i></a></li>
+      </ul>
+  </nav>
+  
+  
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.pkgd.js"></script>
+      <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="  crossorigin="anonymous"></script>
+      <script src="js/script.js"></script>
+</body>
+</html>
