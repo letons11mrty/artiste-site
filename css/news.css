@@ -508,9 +508,8 @@ hr{
   color: #5b5959d7;
 }
 .content-box hr {
-  width: 400px;
-  max-width: 80%;
-  margin: 10px auto;
+  width: 100%;
+  margin: 10px 0;
 }
 .hidden {
     display: none;
@@ -820,6 +819,10 @@ margin: 0;
 
 /* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 768px) {
+  .content-box hr {
+    width: 100%;
+    max-width: 100%;
+  }
   .information {
     width: 90%;
     max-width: 100%;
@@ -854,7 +857,9 @@ margin: 0;
   .content-box a {
     font-size: 16px;
     display: block;
-    padding: 4px 0;
+    padding-bottom: 12px;
+    margin-bottom: 4px;
+    border-bottom: none;
   }
 
   .content-box p {
