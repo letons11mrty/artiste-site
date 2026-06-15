@@ -3004,4 +3004,56 @@ margin: 0;
   position: static !important;
 }
 
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .all17, .all16, .all15, .all14, .all13, .all12, .all11, .all10,
+  .all09, .all08, .all07, .all06, .all05, .all04, .all03, .all02,
+  .all01, .all00, .all0,
+  .album-all04, .album-all03, .album-all02, .album-all01,
+  .single-all09, .single-all08, .single-all07, .single-all06,
+  .single-all05, .single-all04, .single-all03, .single-all02, .single-all01,
+  .other07, .other06, .other05, .other04, .other03, .other02, .other01 {
+    gap: 20px !important;
+    padding: 16px 0 !important;
+  }
+
+  .single img { width: 140px; }
+  .album img { width: 140px; }
+  .comic2 img { width: 110px; }
+  .novel img { width: 110px; }
+  .ep img { width: 140px; }
+  .comic img { width: 110px; }
+  .card img { width: 120px; }
+  .score img { width: 110px; }
+  .illust-book img { width: 140px; }
+  .movie img { width: 120px; }
+  .live-in-animation img { width: 110px; }
+
+  .information {
+    padding: 0 12px;
+    box-sizing: border-box;
+  }
+
+  .carousel {
+    margin-top: 40px;
+  }
+
+  .buttonall {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .button {
+    font-size: 16px;
+    width: auto;
+    padding: 0 12px;
+  }
+
+  .content-box p,
+  .content-box a {
+    font-size: 16px;
+  }
+}
+
 

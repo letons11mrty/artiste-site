@@ -800,3 +800,99 @@ margin: 0;
 .guideline:hover{
   background-size: 100% 1px;
 }
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .info-disco-section {
+    flex-direction: column;
+    width: 100%;
+    padding: 20px 16px;
+    box-sizing: border-box;
+    gap: 20px;
+  }
+
+  .information {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .content-box {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .button {
+    width: 23%;
+    font-size: 13px;
+    padding: 0 2px;
+    height: 44px;
+  }
+
+  .slider-wrapper {
+    width: 100%;
+  }
+
+  .slider {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .slide img {
+    width: 100%;
+    height: auto;
+  }
+
+  .gallery-cell p {
+    left: 16px;
+    font-size: 11px;
+    right: 8px;
+  }
+
+  .neon {
+    position: static;
+    display: block;
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .next p {
+    position: static;
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .day p {
+    position: static;
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .samplearea {
+    margin-top: 0;
+  }
+
+  .top-icon p {
+    position: static;
+    font-size: 18px;
+    text-align: center;
+  }
+
+  #CDT {
+    font-size: 48px;
+  }
+
+  #CDT01 {
+    font-size: 28px;
+  }
+
+  .content-box a {
+    font-size: 14px;
+    display: block;
+    padding: 4px 0;
+  }
+
+  .content-box p {
+    font-size: 13px;
+  }
+}

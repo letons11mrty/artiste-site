@@ -836,3 +836,47 @@ margin: 0;
 .guideline:hover{
   background-size: 100% 1px;
 }
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .information {
+    width: 90%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .content-box {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .more {
+    position: static;
+    text-align: right;
+    padding: 8px 10px;
+  }
+
+  .next-news {
+    margin-left: 0;
+    text-align: right;
+    margin-bottom: 30px;
+    margin-top: 20px;
+  }
+
+  .button {
+    width: 23%;
+    font-size: 13px;
+    padding: 0 2px;
+    height: 44px;
+  }
+
+  .content-box a {
+    font-size: 18px;
+    display: block;
+    padding: 4px 0;
+  }
+
+  .content-box p {
+    font-size: 18px;
+  }
+}
